@@ -1,0 +1,37 @@
+name:  MERN CI Workflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🧾 Checkout Code
+      uses: actions/checkout@v3
+
+    - name: 🛠 Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: 📦 Install Server Dependencies
+      working-directory: ./server
+      run: npm install
+
+    - name: 📦 Install Client Dependencies
+      working-directory: ./client
+      run: npm install
+
+    - name: 🔨 Build Client
+      working-directory: ./client
+      run: npm run build
+
+    - name: ✅ Run Server Tests (if any)
+      working-directory: ./server
+      run: |
+        echo "No tests yet"
