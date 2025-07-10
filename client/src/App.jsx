@@ -6,6 +6,9 @@ export default function App() {
   return (
    <>
    <Signup></Signup>
+   <h1>Hello GitHub from Mehar</h1>
+
    </>
+   
   )
 }
